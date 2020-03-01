@@ -8,7 +8,7 @@
       <div>
         <div class="form-item">
           <label for="ユーザー名">ユーザー名</label>
-          <input v-model="nickname" type="text" name="nickname" />
+          <input v-model="meetingId" type="text" name="meetingId" />
         </div>
         <div class="form-item">
           <label for="meetingId">Meeting ID:</label>
@@ -40,10 +40,6 @@ export default {
 </script>
 
 <style>
-#zmmtg-root {
-  display: none;
-}
-
 .join {
   padding: 5px;
 }

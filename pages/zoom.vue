@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import ZoomWindow from "~/components/ZoomWindow";
+import ZoomWindow from "@/components/ZoomWindow";
 
 export default {
   components: {
