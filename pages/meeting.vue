@@ -23,11 +23,17 @@ export default {
   created() {
     this.nickname = this.$route.query.nickname;
     this.meetingId = this.$route.query.meetingId;
+    console.log("this.nickname", this.nickname);
+    console.log("meetingId", this.meetingId);
   }
 };
 </script>
 
 <style>
+/* #zmmtg-root {
+  visibility: true;
+} */
+
 .container-zoom {
   width: 70%;
   height: 100%;

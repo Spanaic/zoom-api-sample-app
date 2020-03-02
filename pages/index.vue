@@ -16,14 +16,21 @@
         </div>
 
         <div class="form-item">
-          <button>
+          <button @click="changeDisplayForMtg">
             <nuxt-link
               :to="{path: '/meeting', query: {nickname: nickname, meetingId: meetingId}}"
             >キャリアコンサルタントに相談する</nuxt-link>
+            <!-- <a :href="baseUrl.url">キャリアコンサルタントに相談する</a> -->
           </button>
         </div>
       </div>
     </div>
+    <!-- <div id="zmmtg-root" :class="[ isActive === true ? 'zmmtg-off' : null]"></div> -->
+    <!-- <div id="zmmtg-root" :class="{ zmmtgOff: isActive}"></div> -->
+    <!-- <div :class="{ zmmtgOff: isActive}"> -->
+    <!-- <div id="zmmtg-root"></div> -->
+    <!-- <div id="aria-notify-area"></div> -->
+    <!-- </div> -->
   </div>
 </template>
 
@@ -33,16 +40,38 @@ export default {
   data() {
     return {
       nickname: "",
-      meetingId: ""
+      meetingId: "",
+      isActive: true
+      // baseUrl: {
+      //   url:
+      //     process.env.BASE_URL +
+      //     `/meeting?nickname=${this.nickname}&?meetingId=${this.meetingId}`
+      //   // query: { nickname: this.nickname, meetingId: this.meetingId }
+      // }
+      // FIXME: リロードすることには成功したけど、リロードなのでqueryのdataがundefinedになってしまうため断念。。。
     };
+  },
+  methods: {
+    changeDisplayForMtg() {
+      this.isActive = false;
+      console.log("this.isActive", this.isActive);
+    }
+  },
+  created() {
+    console.log("this.isActive", this.isActive);
   }
 };
 </script>
 
 <style>
-#zmmtg-root {
+/* #zmmtg-root {
+  visibility: hidden;
+} */
+
+/* .zmmtgOff {
   display: none;
-}
+  visibility: hidden;
+} */
 
 .join {
   padding: 5px;

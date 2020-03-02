@@ -1,4 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
+import path from 'path'
+import fs from 'fs'
 
 require('dotenv').config()
 
@@ -20,22 +22,26 @@ export default {
     ],
     script: [
       // { src: 'node_modules/react/umd/react.production.min.js' },
-      { src: 'https://unpkg.com/react@16/umd/react.production.min.js' },
+      // { src: 'https://unpkg.com/react@16/umd/react.production.min.js' },
 
       // { src: 'node_modules/react-dom/umd/react-dom.production.min.js' },
-      { src: 'https://unpkg.com/react-dom@16/umd/react-dom.production.min.js' },
+      // { src: 'https://unpkg.com/react-dom@16/umd/react-dom.production.min.js' },
 
       // { src: 'node_modules/redux/dist/redux.min.js' },
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.min.js' },
+      // { src: 'https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.min.js' },
 
       // { src: 'node_modules/redux-thunk/dist/redux-thunk.min.js' },
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/redux-thunk/2.3.0/redux-thunk.min.js' },
+      // { src: 'https://cdnjs.cloudflare.com/ajax/libs/redux-thunk/2.3.0/redux-thunk.min.js' },
 
       // { src: 'node_modules/lodash/lodash.min.js' },
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js' },
+      // { src: 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js' },
 
       // { src: 'node_modules/jquery/dist/jquery.min.js' },
       { src: ' https://code.jquery.com/jquery-3.4.1.min.js' },
+      // { src: 'https://code.jquery.com/jquery-3.3.1.min.js' },
+      // NOTE: jqueryを削除するとzmmtg-rootが邪魔をすることはなくなるが、meetingコンポーネントを表示する時にエラーとなる
+
+      // { src: 'https://source.zoom.us/zoom-meeting-1.7.0.min.js' },
     ]
   },
   /*
@@ -94,6 +100,14 @@ export default {
         }
       }
     }
+  },
+  server: {
+    port: 3000,
+    host: "0.0.0.0",
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, "localhost-key.pem")),
+      cert: fs.readFileSync(path.resolve(__dirname, "localhost.pem"))
+    },
   },
   /*
   ** Build configuration

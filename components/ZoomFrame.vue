@@ -19,11 +19,18 @@
 <script>
 import { ZoomMtg } from "@zoomus/websdk";
 
-console.log("API_KEY", process.env.API_KEY);
+console.log("checkSystemRequirements");
+console.log(JSON.stringify(ZoomMtg.checkSystemRequirements()));
 
 // CDN version default
 
 ZoomMtg.setZoomJSLib("https://dmogdx0jrul3u.cloudfront.net/1.3.7/lib", "/av");
+ZoomMtg.setZoomJSLib("https://source.zoom.us/1.5.0/lib", "/av");
+// ZoomMtg.setZoomJSLib(
+//   "http://localhost:3000/node_modules/@zoomus/websdk/dist/lib",
+//   "/av"
+// ); // Local version default
+
 ZoomMtg.preLoadWasm();
 ZoomMtg.prepareJssdk();
 
@@ -47,14 +54,14 @@ export default {
       meetingNumber: this.meetingId,
       userName: this.nickname,
       passWord: "",
-      leaveUrl: "https://zoom.us",
+      leaveUrl: process.env.BASE_URL,
       role: 0
     };
 
     this.signature = ZoomMtg.generateSignature({
       meetingNumber: this.meetConfig.meetingNumber,
       apiKey: this.meetConfig.apiKey,
-      apiSecret: this.meetConfig.apiKey,
+      apiSecret: this.meetConfig.apiSecret,
       role: this.meetConfig.role,
       success(res) {
         console.log("success signature: " + res.result);
@@ -62,7 +69,7 @@ export default {
     });
 
     ZoomMtg.init({
-      leaveUrl: "http://zoom.us",
+      leaveUrl: process.env.BASE_URL,
       isSupportAV: true,
       success: () => {
         ZoomMtg.join({
@@ -87,9 +94,13 @@ export default {
         console.log(res);
       }
     });
-  }
+  },
+  mounted() {}
 };
 </script>
 
-<style>
+<style scoped>
+/* #zmmtg-root {
+  visibility: true;
+} */
 </style>
