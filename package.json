@@ -15,7 +15,7 @@
     "@nuxtjs/dotenv": "^1.4.0",
     "@zoomus/websdk": "^1.7.0",
     "mkcert": "^1.2.0",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.15.8"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.0.0"
